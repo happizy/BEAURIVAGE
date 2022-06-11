@@ -1,4 +1,103 @@
+import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-public class FenListeEmp {
-
+public class FenListeEmp extends Stage{
+	//data
+	ObservableList<Emplacement> liste = FXCollections.observableArrayList();
+	//items
+	private VBox				racine			= new VBox();
+	private GridPane			zoneDetail		= new GridPane();
+	private AnchorPane  		zoneTable		= new AnchorPane();
+	private HBox zonebasse = new HBox();
+	private HBox zonefiltrehaut = new HBox();
+	private HBox zonefiltrebas = new HBox();
+	private VBox filtrebox = new VBox();
+	private VBox nminbox = new VBox();
+	private VBox nmaxbox = new VBox();
+	private VBox dminbox = new VBox();
+	private VBox dmaxbox = new VBox();
+	private VBox ncontbox = new VBox();
+	private VBox nclibox = new VBox();
+	private VBox nomclibox = new VBox();
+	private VBox datebox = new VBox();
+	private VBox catbox = new VBox();
+	private VBox				zoneFiltre			= new VBox();
+	ComboBox<String> tri = new ComboBox<String>();
+	ComboBox<String> filtre = new ComboBox<String>();
+	Label blank	= new Label();
+	Label nminlabel = new Label("n°min");
+	Label nmaxlabel = new Label("n°max");
+	Label dminlabel = new Label("Date début:");
+	Label dmaxlabel = new Label("Date fin:");
+	TableView<Emplacement> 	tableEmployes	= new TableView<Emplacement>();
+	Label lblno	= new Label("n°XXX");
+	Label lblcont = new Label("n° de contrat :");
+	Label lblcli = new Label("n° de client :");
+	Label lblnomcli = new Label("nom du client :");
+	Label lbldate = new Label("période d'occupation :");
+	Label lblcat = new Label("catégorie :");
+	TextField nmin = new TextField();
+	TextField nmax = new TextField();
+	TextField dmin = new TextField();
+	TextField dmax = new TextField();
+	TextField numcont = new TextField();
+	TextField numcli = new TextField();
+	TextField nomcli = new TextField();
+	TextField date = new TextField();
+	TextField cat = new TextField();
+	Button bnReaffect = new Button("réaffecter");
+	public FenListeEmp() {
+		setTitle("liste d'emplacements");
+		tri.getItems().addAll("option1","option2","option3");
+		tri.setPromptText("trier par");
+		filtre.getItems().addAll("option1","option2","option3");
+		filtre.setPromptText("filtrer par");
+		tableEmployes.setPrefWidth(450);
+		zoneTable.getChildren().add(tableEmployes);
+		filtrebox.getChildren().addAll(blank,filtre);
+		nminbox.getChildren().addAll(nminlabel,nmin);
+		nmaxbox.getChildren().addAll(nmaxlabel,nmax);
+		dminbox.getChildren().addAll(dminlabel,dmin);
+		dmaxbox.getChildren().addAll(dmaxlabel,dmax);
+		zonefiltrehaut.getChildren().addAll(filtrebox,nminbox,nmaxbox,dminbox,dmaxbox);
+		zonefiltrebas.getChildren().add(tri);
+		ncontbox.getChildren().addAll(lblcont,numcont);
+		nclibox.getChildren().addAll(lblcli,numcli);
+		nomclibox.getChildren().addAll(lblnomcli,nomcli);
+		datebox.getChildren().addAll(lbldate,date);
+		catbox.getChildren().addAll(lblcat,cat);
+		zoneDetail.addRow(0,  lblno, bnReaffect);
+		zoneDetail.addRow(1,  ncontbox);
+		zoneDetail.addRow(2,  nclibox);
+		zoneDetail.addRow(3,  nomclibox);
+		zoneDetail.addRow(4,  datebox);
+		zoneDetail.addRow(5,  catbox);
+		zoneDetail.setHgap(10);
+		zoneDetail.setVgap(10);
+		zoneDetail.setPadding(new Insets(10));
+		zoneFiltre.setPadding(new Insets(10,10,10,0));
+		tri.setStyle("-fx-margin-left: 20px;");
+		filtrebox.setPadding(new Insets(10,10,10,0));
+		nminbox.setPadding(new Insets(10));
+		nmaxbox.setPadding(new Insets(10));
+		dminbox.setPadding(new Insets(10));
+		dmaxbox.setPadding(new Insets(10));
+		racine.setPadding(new Insets(10));
+		zonebasse.getChildren().addAll(zoneTable,zoneDetail);
+		zoneFiltre.getChildren().addAll(zonefiltrehaut,zonefiltrebas);
+		racine.getChildren().addAll(zoneFiltre,zonebasse);
+		Scene scene = new Scene(racine);
+		//scene.getStylesheets().add("stylesheet.css");
+		this.setScene(scene);
+		this.show();	
+	}
 }
