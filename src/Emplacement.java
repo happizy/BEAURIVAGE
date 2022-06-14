@@ -1,50 +1,31 @@
 
-public class Emplacement {
-	int num,numcont,numcli;
-	String nomcli,date,cat;
-	public Emplacement(int num, int numcont, int numcli, String nomcli, String date, String cat) {
-		super();
-		this.num = num;
-		this.numcont = numcont;
-		this.numcli = numcli;
-		this.nomcli = nomcli;
-		this.date = date;
-		this.cat = cat;
+public class Emplacement extends Categorie{
+
+	private int numero;
+	private Categorie categorie;
+	
+	public Emplacement(int numero, Categorie categorie,int superficie,int capacite,int prix) {
+		super(superficie, capacite, prix);
+		this.numero = numero;
+		this.categorie = categorie;
 	}
-	public int getNum() {
-		return num;
+
+	public int getNumero() {
+		return numero;
 	}
-	public void setNum(int num) {
-		this.num = num;
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
-	public int getNumcont() {
-		return numcont;
+
+	public Categorie getCategorie() {
+		return categorie;
 	}
-	public void setNumcont(int numcont) {
-		this.numcont = numcont;
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
-	public int getNumcli() {
-		return numcli;
-	}
-	public void setNumcli(int numcli) {
-		this.numcli = numcli;
-	}
-	public String getNomcli() {
-		return nomcli;
-	}
-	public void setNomcli(String nomcli) {
-		this.nomcli = nomcli;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getCat() {
-		return cat;
-	}
-	public void setCat(String cat) {
-		this.cat = cat;
-	}
+	
+	
+	
 }
