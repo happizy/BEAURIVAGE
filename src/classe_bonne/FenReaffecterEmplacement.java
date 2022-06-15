@@ -115,6 +115,14 @@ public class FenReaffecterEmplacement extends Stage {
 			return racine;
 		}
 		
+		public void init( int numContrat, int numCLi, String nomCli, Categorie c) {
+			txtContrat.setText(""+numContrat);
+			txtNom.setText(""+numCLi);
+			txtNom.setText(nomCli);
+			txtCategorie.setText(""+c);
+			
+		}
+		
 		/*public void init(ArrayList<Integer> lesSup, ArrayList<Integer> lesDep, int mat, String nom, String poste, int sup, String emb, float sal, float prime, int dep) {
 			txtMatricule.setText(""+mat);
 			txtNom.setText(nom);
